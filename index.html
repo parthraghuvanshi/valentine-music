@@ -1,0 +1,1666 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Our Soundtrack ❤️</title>
+    <link href="https://fonts.googleapis.com/css2?family=SF+Pro+Display:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- YouTube IFrame API -->
+    <script src="https://www.youtube.com/iframe_api"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --apple-red: #fc3c44;
+            --apple-pink: #ff2d55;
+            --bg-primary: #000000;
+            --bg-secondary: #1c1c1e;
+            --bg-tertiary: #2c2c2e;
+            --text-primary: #ffffff;
+            --text-secondary: #a1a1a6;
+            --text-tertiary: #636366;
+            --blur-bg: rgba(28, 28, 30, 0.7);
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
+            background: linear-gradient(180deg, #000000 0%, #1a0a0f 50%, #000000 100%);
+            color: var(--text-primary);
+            overflow-x: hidden;
+            min-height: 100vh;
+        }
+
+        .app-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 20px;
+            padding-bottom: 180px;
+        }
+
+        /* Header */
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 0;
+            margin-bottom: 40px;
+            animation: fadeInDown 0.8s ease-out;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 28px;
+            font-weight: 700;
+            letter-spacing: -0.5px;
+        }
+
+        .logo svg {
+            width: 32px;
+            height: 32px;
+            fill: var(--apple-red);
+        }
+
+        /* Valentine's Dedication */
+        .dedication {
+            background: linear-gradient(135deg, rgba(252, 60, 68, 0.15) 0%, rgba(255, 45, 85, 0.05) 100%);
+            border: 1px solid rgba(252, 60, 68, 0.2);
+            border-radius: 16px;
+            padding: 32px;
+            margin-bottom: 48px;
+            text-align: center;
+            backdrop-filter: blur(20px);
+            animation: fadeIn 1s ease-out 0.3s both;
+        }
+
+        .dedication h1 {
+            font-size: 42px;
+            font-weight: 700;
+            margin-bottom: 16px;
+            background: linear-gradient(90deg, #ff2d55 0%, #fc3c44 50%, #ff2d55 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            letter-spacing: -1px;
+        }
+
+        .dedication p {
+            font-size: 18px;
+            color: var(--text-secondary);
+            line-height: 1.6;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        /* Playlist Section */
+        .playlist-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 24px;
+            animation: fadeIn 1s ease-out 0.5s both;
+        }
+
+        .playlist-header h2 {
+            font-size: 32px;
+            font-weight: 700;
+            letter-spacing: -0.5px;
+        }
+
+        .playlist-controls {
+            display: flex;
+            gap: 12px;
+        }
+
+        .control-btn {
+            background: var(--bg-tertiary);
+            border: none;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .control-btn:hover {
+            background: var(--bg-secondary);
+            transform: scale(1.05);
+        }
+
+        .control-btn.active {
+            background: var(--apple-red);
+        }
+
+        .control-btn svg {
+            width: 18px;
+            height: 18px;
+            fill: var(--text-primary);
+        }
+
+        /* Song Grid */
+        .songs-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 24px;
+            margin-bottom: 40px;
+        }
+
+        .song-card {
+            cursor: pointer;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            animation: fadeInUp 0.6s ease-out both;
+        }
+
+        .song-card:nth-child(1) { animation-delay: 0.1s; }
+        .song-card:nth-child(2) { animation-delay: 0.15s; }
+        .song-card:nth-child(3) { animation-delay: 0.2s; }
+        .song-card:nth-child(4) { animation-delay: 0.25s; }
+        .song-card:nth-child(5) { animation-delay: 0.3s; }
+        .song-card:nth-child(6) { animation-delay: 0.35s; }
+        .song-card:nth-child(7) { animation-delay: 0.4s; }
+        .song-card:nth-child(8) { animation-delay: 0.45s; }
+
+        .song-card:hover {
+            transform: translateY(-8px);
+        }
+
+        .song-cover {
+            position: relative;
+            width: 100%;
+            padding-bottom: 100%;
+            border-radius: 12px;
+            overflow: hidden;
+            margin-bottom: 12px;
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
+            background: var(--bg-tertiary);
+        }
+
+        .song-cover img {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.3s ease;
+        }
+
+        .song-card:hover .song-cover img {
+            transform: scale(1.05);
+        }
+
+        .play-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.4);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .song-card:hover .play-overlay,
+        .song-card.playing .play-overlay {
+            opacity: 1;
+        }
+
+        .play-icon {
+            width: 50px;
+            height: 50px;
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            backdrop-filter: blur(10px);
+            transform: scale(0.9);
+            transition: transform 0.2s ease;
+        }
+
+        .song-card:hover .play-icon {
+            transform: scale(1);
+        }
+
+        .play-icon svg {
+            width: 20px;
+            height: 20px;
+            fill: #000;
+            margin-left: 2px;
+        }
+
+        .play-icon.pause svg {
+            margin-left: 0;
+        }
+
+        .song-info {
+            padding: 0 4px;
+        }
+
+        .song-title {
+            font-size: 16px;
+            font-weight: 600;
+            margin-bottom: 4px;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        .song-artist {
+            font-size: 14px;
+            color: var(--text-secondary);
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        .song-note {
+            font-size: 12px;
+            color: var(--text-tertiary);
+            font-style: italic;
+            margin-top: 4px;
+            line-height: 1.3;
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+
+        /* Now Playing Bar */
+        .now-playing {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: var(--blur-bg);
+            backdrop-filter: blur(40px) saturate(180%);
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            padding: 16px 24px;
+            z-index: 1000;
+            transform: translateY(100%);
+            transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .now-playing.active {
+            transform: translateY(0);
+        }
+
+        .now-playing-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 2fr 1fr;
+            gap: 24px;
+            align-items: center;
+        }
+
+        .current-track {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            min-width: 0;
+        }
+
+        .current-cover {
+            width: 60px;
+            height: 60px;
+            border-radius: 8px;
+            object-fit: cover;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+        }
+
+        .current-info {
+            min-width: 0;
+            flex: 1;
+        }
+
+        .current-title {
+            font-size: 15px;
+            font-weight: 600;
+            margin-bottom: 4px;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        .current-artist {
+            font-size: 13px;
+            color: var(--text-secondary);
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        /* Player Controls */
+        .player-controls {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .control-buttons {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .player-btn {
+            background: none;
+            border: none;
+            color: var(--text-primary);
+            cursor: pointer;
+            padding: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.2s ease;
+            border-radius: 50%;
+        }
+
+        .player-btn:hover {
+            background: rgba(255, 255, 255, 0.1);
+            transform: scale(1.05);
+        }
+
+        .player-btn svg {
+            width: 20px;
+            height: 20px;
+            fill: currentColor;
+        }
+
+        .player-btn.play-pause {
+            width: 44px;
+            height: 44px;
+            background: var(--text-primary);
+            color: var(--bg-primary);
+        }
+
+        .player-btn.play-pause:hover {
+            background: var(--text-primary);
+            transform: scale(1.1);
+        }
+
+        .player-btn.play-pause svg {
+            width: 18px;
+            height: 18px;
+        }
+
+        /* Progress Bar */
+        .progress-container {
+            width: 100%;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .time {
+            font-size: 12px;
+            color: var(--text-secondary);
+            min-width: 40px;
+        }
+
+        .time.current {
+            text-align: right;
+        }
+
+        .progress-bar {
+            flex: 1;
+            height: 6px;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 3px;
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background: var(--apple-red);
+            border-radius: 3px;
+            width: 0%;
+            transition: width 0.1s linear;
+            position: relative;
+        }
+
+        .progress-fill::after {
+            content: '';
+            position: absolute;
+            right: 0;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 12px;
+            height: 12px;
+            background: white;
+            border-radius: 50%;
+            opacity: 0;
+            transition: opacity 0.2s ease;
+        }
+
+        .progress-bar:hover .progress-fill::after {
+            opacity: 1;
+        }
+
+        /* Volume Control */
+        .volume-control {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            justify-content: flex-end;
+        }
+
+        .volume-icon {
+            width: 20px;
+            height: 20px;
+            fill: var(--text-primary);
+        }
+
+        .volume-slider {
+            width: 100px;
+            height: 4px;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 2px;
+            cursor: pointer;
+            position: relative;
+        }
+
+        .volume-fill {
+            height: 100%;
+            background: var(--text-primary);
+            border-radius: 2px;
+            width: 70%;
+            transition: width 0.1s ease;
+        }
+
+        /* Animations */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .app-container {
+                padding: 12px;
+                padding-bottom: 200px;
+            }
+
+            .header {
+                margin-bottom: 24px;
+            }
+
+            .logo {
+                font-size: 24px;
+            }
+
+            .dedication {
+                padding: 24px;
+            }
+
+            .dedication h1 {
+                font-size: 32px;
+            }
+
+            .dedication p {
+                font-size: 16px;
+            }
+
+            .playlist-header h2 {
+                font-size: 24px;
+            }
+
+            .songs-grid {
+                grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+                gap: 16px;
+            }
+
+            .now-playing-content {
+                grid-template-columns: 1fr;
+                gap: 16px;
+            }
+
+            .volume-control {
+                display: none;
+            }
+
+            .current-track {
+                justify-content: center;
+            }
+        }
+
+        /* Fullscreen Player Modal */
+        .fullscreen-player {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            z-index: 2000;
+            background: #000;
+            display: none;
+            flex-direction: column;
+            justify-content: space-between;
+            padding: 40px;
+            opacity: 0;
+            transition: opacity 0.4s ease;
+        }
+
+        .fullscreen-player.active {
+            display: flex;
+            opacity: 1;
+        }
+
+        .fullscreen-background {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            z-index: -1;
+            transition: background 0.6s ease;
+        }
+
+        .fullscreen-background::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.3);
+            backdrop-filter: blur(100px);
+        }
+
+        .fullscreen-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 10;
+        }
+
+        .fullscreen-title {
+            font-size: 14px;
+            font-weight: 600;
+            color: var(--text-secondary);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .close-fullscreen {
+            background: none;
+            border: none;
+            color: var(--text-primary);
+            cursor: pointer;
+            padding: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.2s ease;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+        }
+
+        .close-fullscreen:hover {
+            background: rgba(255, 255, 255, 0.1);
+        }
+
+        .close-fullscreen svg {
+            width: 24px;
+            height: 24px;
+            fill: currentColor;
+        }
+
+        .fullscreen-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 48px;
+            z-index: 10;
+            max-width: 600px;
+            margin: 0 auto;
+            width: 100%;
+        }
+
+        .fullscreen-cover-container {
+            width: 100%;
+            max-width: 500px;
+            animation: scaleIn 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
+        }
+
+        @keyframes scaleIn {
+            from {
+                opacity: 0;
+                transform: scale(0.8);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        .fullscreen-cover {
+            width: 100%;
+            padding-bottom: 100%;
+            position: relative;
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 40px 80px rgba(0, 0, 0, 0.6);
+        }
+
+        .fullscreen-cover img {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .fullscreen-info {
+            text-align: center;
+            width: 100%;
+        }
+
+        .fullscreen-song-title {
+            font-size: 36px;
+            font-weight: 700;
+            margin-bottom: 12px;
+            letter-spacing: -0.5px;
+        }
+
+        .fullscreen-artist {
+            font-size: 24px;
+            color: var(--text-secondary);
+            margin-bottom: 16px;
+        }
+
+        .fullscreen-note {
+            font-size: 16px;
+            color: var(--text-tertiary);
+            font-style: italic;
+            line-height: 1.5;
+            max-width: 500px;
+            margin: 0 auto;
+        }
+
+        .fullscreen-controls {
+            width: 100%;
+            z-index: 10;
+        }
+
+        .fullscreen-progress {
+            margin-bottom: 32px;
+        }
+
+        .fullscreen-progress .progress-bar {
+            height: 8px;
+            margin-bottom: 12px;
+        }
+
+        .fullscreen-progress .progress-fill {
+            height: 100%;
+        }
+
+        .fullscreen-time {
+            display: flex;
+            justify-content: space-between;
+            font-size: 14px;
+            color: var(--text-secondary);
+        }
+
+        .fullscreen-buttons {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 32px;
+            margin-bottom: 32px;
+        }
+
+        .fullscreen-btn {
+            background: none;
+            border: none;
+            color: var(--text-primary);
+            cursor: pointer;
+            padding: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.2s ease;
+            border-radius: 50%;
+        }
+
+        .fullscreen-btn:hover {
+            background: rgba(255, 255, 255, 0.1);
+            transform: scale(1.05);
+        }
+
+        .fullscreen-btn svg {
+            width: 28px;
+            height: 28px;
+            fill: currentColor;
+        }
+
+        .fullscreen-btn.play-pause {
+            width: 80px;
+            height: 80px;
+            background: rgba(255, 255, 255, 0.95);
+            color: #000;
+        }
+
+        .fullscreen-btn.play-pause:hover {
+            background: rgba(255, 255, 255, 1);
+            transform: scale(1.1);
+        }
+
+        .fullscreen-btn.play-pause svg {
+            width: 32px;
+            height: 32px;
+        }
+
+        .fullscreen-volume {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 16px;
+            max-width: 400px;
+            margin: 0 auto;
+        }
+
+        .fullscreen-volume .volume-icon {
+            width: 24px;
+            height: 24px;
+        }
+
+        .fullscreen-volume .volume-slider {
+            flex: 1;
+            height: 6px;
+        }
+
+        @media (max-width: 768px) {
+            .fullscreen-player {
+                padding: 24px;
+            }
+
+            .fullscreen-song-title {
+                font-size: 28px;
+            }
+
+            .fullscreen-artist {
+                font-size: 20px;
+            }
+
+            .fullscreen-note {
+                font-size: 14px;
+            }
+
+            .fullscreen-content {
+                gap: 32px;
+            }
+
+            .fullscreen-buttons {
+                gap: 24px;
+            }
+
+            .fullscreen-btn.play-pause {
+                width: 70px;
+                height: 70px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="app-container">
+        <!-- Header -->
+        <div class="header">
+            <div class="logo">
+                <svg viewBox="0 0 24 24">
+                    <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 14.5v-9l6 4.5-6 4.5z"/>
+                </svg>
+                <span>Our Soundtrack</span>
+            </div>
+            <div class="playlist-controls">
+                <button class="control-btn" id="shuffleBtn" title="Shuffle">
+                    <svg viewBox="0 0 24 24">
+                        <path d="M10.59 9.17L5.41 4 4 5.41l5.17 5.17 1.42-1.41zM14.5 4l2.04 2.04L4 18.59 5.41 20 17.96 7.46 20 9.5V4h-5.5zm.33 9.41l-1.41 1.41 3.13 3.13L14.5 20H20v-5.5l-2.04 2.04-3.13-3.13z"/>
+                    </svg>
+                </button>
+                <button class="control-btn" id="repeatBtn" title="Repeat">
+                    <svg viewBox="0 0 24 24">
+                        <path d="M7 7h10v3l4-4-4-4v3H5v6h2V7zm10 10H7v-3l-4 4 4 4v-3h12v-6h-2v4z"/>
+                    </svg>
+                </button>
+            </div>
+        </div>
+
+        <!-- Valentine's Dedication -->
+        <div class="dedication">
+            <h1>Happy Valentine's Day ❤️</h1>
+            <p>Every song here reminds me of a moment we've shared, a feeling you've given me, or simply... you. This is our story in music. I love you.</p>
+        </div>
+
+        <!-- Playlist -->
+        <div class="playlist-header">
+            <h2>Our Playlist</h2>
+        </div>
+
+        <div class="songs-grid" id="songsGrid">
+            <!-- Songs will be dynamically generated -->
+        </div>
+    </div>
+
+    <!-- Now Playing Bar -->
+    <div class="now-playing" id="nowPlaying">
+        <div class="now-playing-content">
+            <!-- Current Track Info -->
+            <div class="current-track">
+                <img src="" alt="" class="current-cover" id="currentCover">
+                <div class="current-info">
+                    <div class="current-title" id="currentTitle">Select a song</div>
+                    <div class="current-artist" id="currentArtist">—</div>
+                </div>
+            </div>
+
+            <!-- Player Controls -->
+            <div class="player-controls">
+                <div class="control-buttons">
+                    <button class="player-btn" id="prevBtn" title="Previous">
+                        <svg viewBox="0 0 24 24">
+                            <path d="M6 6h2v12H6zm3.5 6l8.5 6V6z"/>
+                        </svg>
+                    </button>
+                    <button class="player-btn play-pause" id="playPauseBtn">
+                        <svg viewBox="0 0 24 24" id="playIcon">
+                            <path d="M8 5v14l11-7z"/>
+                        </svg>
+                        <svg viewBox="0 0 24 24" id="pauseIcon" style="display: none;">
+                            <path d="M6 4h4v16H6V4zm8 0h4v16h-4V4z"/>
+                        </svg>
+                    </button>
+                    <button class="player-btn" id="nextBtn" title="Next">
+                        <svg viewBox="0 0 24 24">
+                            <path d="M6 18l8.5-6L6 6v12zM16 6v12h2V6h-2z"/>
+                        </svg>
+                    </button>
+                </div>
+                <div class="progress-container">
+                    <span class="time current" id="currentTime">0:00</span>
+                    <div class="progress-bar" id="progressBar">
+                        <div class="progress-fill" id="progressFill"></div>
+                    </div>
+                    <span class="time" id="duration">0:00</span>
+                </div>
+            </div>
+
+            <!-- Volume Control -->
+            <div class="volume-control">
+                <svg class="volume-icon" viewBox="0 0 24 24">
+                    <path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/>
+                </svg>
+                <div class="volume-slider" id="volumeSlider">
+                    <div class="volume-fill" id="volumeFill"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- YouTube Player (hidden) -->
+    <div id="youtubePlayerContainer" style="display: none;"></div>
+
+    <!-- Fullscreen Player -->
+    <div class="fullscreen-player" id="fullscreenPlayer">
+        <div class="fullscreen-background" id="fullscreenBackground"></div>
+        
+        <div class="fullscreen-header">
+            <div class="fullscreen-title">Now Playing</div>
+            <button class="close-fullscreen" id="closeFullscreen">
+                <svg viewBox="0 0 24 24">
+                    <path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/>
+                </svg>
+            </button>
+        </div>
+
+        <div class="fullscreen-content">
+            <div class="fullscreen-cover-container">
+                <div class="fullscreen-cover">
+                    <img src="" alt="" id="fullscreenCoverImg">
+                </div>
+            </div>
+
+            <div class="fullscreen-info">
+                <div class="fullscreen-song-title" id="fullscreenTitle">Select a song</div>
+                <div class="fullscreen-artist" id="fullscreenArtist">—</div>
+                <div class="fullscreen-note" id="fullscreenNote"></div>
+            </div>
+        </div>
+
+        <div class="fullscreen-controls">
+            <div class="fullscreen-progress">
+                <div class="progress-bar" id="fullscreenProgressBar">
+                    <div class="progress-fill" id="fullscreenProgressFill"></div>
+                </div>
+                <div class="fullscreen-time">
+                    <span id="fullscreenCurrentTime">0:00</span>
+                    <span id="fullscreenDuration">0:00</span>
+                </div>
+            </div>
+
+            <div class="fullscreen-buttons">
+                <button class="fullscreen-btn" id="fullscreenShuffleBtn" title="Shuffle">
+                    <svg viewBox="0 0 24 24">
+                        <path d="M10.59 9.17L5.41 4 4 5.41l5.17 5.17 1.42-1.41zM14.5 4l2.04 2.04L4 18.59 5.41 20 17.96 7.46 20 9.5V4h-5.5zm.33 9.41l-1.41 1.41 3.13 3.13L14.5 20H20v-5.5l-2.04 2.04-3.13-3.13z"/>
+                    </svg>
+                </button>
+                <button class="fullscreen-btn" id="fullscreenPrevBtn" title="Previous">
+                    <svg viewBox="0 0 24 24">
+                        <path d="M6 6h2v12H6zm3.5 6l8.5 6V6z"/>
+                    </svg>
+                </button>
+                <button class="fullscreen-btn play-pause" id="fullscreenPlayPauseBtn">
+                    <svg viewBox="0 0 24 24" id="fullscreenPlayIcon">
+                        <path d="M8 5v14l11-7z"/>
+                    </svg>
+                    <svg viewBox="0 0 24 24" id="fullscreenPauseIcon" style="display: none;">
+                        <path d="M6 4h4v16H6V4zm8 0h4v16h-4V4z"/>
+                    </svg>
+                </button>
+                <button class="fullscreen-btn" id="fullscreenNextBtn" title="Next">
+                    <svg viewBox="0 0 24 24">
+                        <path d="M6 18l8.5-6L6 6v12zM16 6v12h2V6h-2z"/>
+                    </svg>
+                </button>
+                <button class="fullscreen-btn" id="fullscreenRepeatBtn" title="Repeat">
+                    <svg viewBox="0 0 24 24">
+                        <path d="M7 7h10v3l4-4-4-4v3H5v6h2V7zm10 10H7v-3l-4 4 4 4v-3h12v-6h-2v4z"/>
+                    </svg>
+                </button>
+            </div>
+
+            <div class="fullscreen-volume">
+                <svg class="volume-icon" viewBox="0 0 24 24">
+                    <path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/>
+                </svg>
+                <div class="volume-slider" id="fullscreenVolumeSlider">
+                    <div class="volume-fill" id="fullscreenVolumeFill"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // ========================================
+        // PLAYLIST DATA - REPLACE WITH YOUR SONGS
+        // ========================================
+        // Just paste the full YouTube URL - the code will extract the video ID automatically!
+        const playlist = [
+            {
+                title: "Perfect",
+                artist: "Ed Sheeran",
+                image: "photos/photo1.JPEG",
+                youtubeUrl: "https://www.youtube.com/watch?v=iKzRIweSBLA&list=RDiKzRIweSBLA&start_radio=1",
+                note: "Our first dance ❤️",
+                gradient: "linear-gradient(135deg, #667eea 0%, #764ba2 100%)"
+            },
+            {
+                title: "Lover",
+                artist: "Taylor Swift",
+                image: "photos/photo2.jpeg",
+                youtubeUrl: "https://music.youtube.com/watch?v=XffsuRCvg2k&si=RhmWs2Vsl83vbF62",
+                note: "You're my best friend",
+                gradient: "linear-gradient(135deg, #f093fb 0%, #f5576c 100%)"
+            },
+            {
+                title: "All of Me",
+                artist: "John Legend",
+                image: "photos/photo3.jpeg",
+                youtubeUrl: "https://music.youtube.com/watch?v=NdSJ1pyaAH8&si=uxcMBa3GJyeZCJt_",
+                note: "Every little thing about you",
+                gradient: "linear-gradient(135deg, #4facfe 0%, #00f2fe 100%)"
+            },
+            {
+                title: "Can't Help Falling in Love",
+                artist: "Elvis Presley",
+                image: "photos/photo5.JPG",
+                youtubeUrl: "https://www.youtube.com/watch?v=vGJTaP6anOU",
+                note: "Classic, just like us",
+                gradient: "linear-gradient(135deg, #43e97b 0%, #38f9d7 100%)"
+            },
+            {
+                title: "Thinking Out Loud",
+                artist: "Ed Sheeran",
+                image: "photos/photo6.JPG",
+                youtubeUrl: "https://www.youtube.com/watch?v=lp-EO5I60KA",
+                note: "When we're 70 together",
+                gradient: "linear-gradient(135deg, #fa709a 0%, #fee140 100%)"
+            },
+            {
+                title: "Make You Feel My Love",
+                artist: "Adele",
+                image: "photos/photo7.JPG",
+                youtubeUrl: "https://www.youtube.com/watch?v=0put0_a--Ng",
+                note: "I'd do anything for you",
+                gradient: "linear-gradient(135deg, #30cfd0 0%, #330867 100%)"
+            },
+            {
+                title: "A Thousand Years",
+                artist: "Christina Perri",
+                image: "photos/photo8.JPG",
+                youtubeUrl: "https://www.youtube.com/watch?v=rtOvBOTyX00",
+                note: "Loved you for a thousand more",
+                gradient: "linear-gradient(135deg, #a8edea 0%, #fed6e3 100%)"
+            },
+            {
+                title: "Lucky",
+                artist: "Jason Mraz ft. Colbie Caillat",
+                image: "photos/photo9.JPG",
+                youtubeUrl: "https://www.youtube.com/watch?v=acvIVA9-FMQ",
+                note: "Lucky I'm in love with you",
+                gradient: "linear-gradient(135deg, #ff9a9e 0%, #fecfef 100%)"
+            },
+            {
+                title: "Photograph",
+                artist: "Ed Sheeran",
+                image: "photos/photo10.jpg",
+                youtubeUrl: "https://www.youtube.com/watch?v=nSDgHBxUbVQ",
+                note: "Every memory with you",
+                gradient: "linear-gradient(135deg, #ffecd2 0%, #fcb69f 100%)"
+            },
+            {
+                title: "At Last",
+                artist: "Etta James",
+                image: "photos/photo11.jpg",
+                youtubeUrl: "https://www.youtube.com/watch?v=S-cbOl96RFM",
+                note: "My love has come along",
+                gradient: "linear-gradient(135deg, #ff6e7f 0%, #bfe9ff 100%)"
+            },
+            {
+                title: "Falling",
+                artist: "Harry Styles",
+                image: "photos/photo12.JPG",
+                youtubeUrl: "https://www.youtube.com/watch?v=EiDvhm0boXk",
+                note: "Falling for you every day",
+                gradient: "linear-gradient(135deg, #e0c3fc 0%, #8ec5fc 100%)"
+            },
+            {
+                title: "Everything",
+                artist: "Michael Bublé",
+                image: "photos/photo13.PNG",
+                youtubeUrl: "https://www.youtube.com/watch?v=SPUJIbXN0WY",
+                note: "You're my everything",
+                gradient: "linear-gradient(135deg, #fbc2eb 0%, #a6c1ee 100%)"
+            },
+            {
+                title: "Die With A Smile",
+                artist: "Bruno Mars & Lady Gaga",
+                image: "photos/photo1.JPEG",
+                youtubeUrl: "https://www.youtube.com/watch?v=kPa7bsKwL-c",
+                note: "If the world ends with you",
+                gradient: "linear-gradient(135deg, #fdcbf1 0%, #e6dee9 100%)"
+            },
+            {
+                title: "Adore You",
+                artist: "Harry Styles",
+                image: "photos/photo2.jpeg",
+                youtubeUrl: "https://www.youtube.com/watch?v=90RLzVUuXe4",
+                note: "Walk in your rainbow paradise",
+                gradient: "linear-gradient(135deg, #f77062 0%, #fe5196 100%)"
+            },
+            {
+                title: "Like I'm Gonna Lose You",
+                artist: "Meghan Trainor ft. John Legend",
+                image: "photos/photo3.jpeg",
+                youtubeUrl: "https://www.youtube.com/watch?v=2-MBfn8XjIU",
+                note: "Love you like every day is the last",
+                gradient: "linear-gradient(135deg, #c471f5 0%, #fa71cd 100%)"
+            },
+            {
+                title: "You Are The Reason",
+                artist: "Calum Scott",
+                image: "photos/photo5.JPG",
+                youtubeUrl: "https://www.youtube.com/watch?v=ByfFurjQAEU",
+                note: "My reason for everything",
+                gradient: "linear-gradient(135deg, #a1c4fd 0%, #c2e9fb 100%)"
+            }
+        ];
+
+        // ========================================
+        // YOUTUBE HELPER FUNCTIONS
+        // ========================================
+        function extractVideoId(url) {
+            // Handles various YouTube URL formats including YouTube Music
+            const patterns = [
+                /(?:youtube\.com\/watch\?v=|youtu\.be\/|youtube\.com\/embed\/)([^&\n?#]+)/,
+                /youtube\.com\/watch\?.*v=([^&\n?#]+)/,
+                /music\.youtube\.com\/watch\?v=([^&\n?#]+)/, // YouTube Music support!
+                /music\.youtube\.com\/watch\?.*v=([^&\n?#]+)/
+            ];
+            
+            for (let pattern of patterns) {
+                const match = url.match(pattern);
+                if (match && match[1]) {
+                    return match[1];
+                }
+            }
+            return null;
+        }
+
+        // Process playlist to add video IDs
+        playlist.forEach(song => {
+            song.videoId = extractVideoId(song.youtubeUrl);
+        });
+
+        // ========================================
+        // PLAYER STATE
+        // ========================================
+        let currentTrackIndex = 0;
+        let isPlaying = false;
+        let isShuffle = false;
+        let repeatMode = 0; // 0: no repeat, 1: repeat all, 2: repeat one
+        let shuffledPlaylist = [...playlist];
+        let youtubePlayer = null;
+        let playerReady = false;
+        let progressInterval = null;
+
+        // ========================================
+        // DOM ELEMENTS
+        // ========================================
+        const youtubePlayerContainer = document.getElementById('youtubePlayerContainer');
+        const nowPlaying = document.getElementById('nowPlaying');
+        const songsGrid = document.getElementById('songsGrid');
+        const playPauseBtn = document.getElementById('playPauseBtn');
+        const playIcon = document.getElementById('playIcon');
+        const pauseIcon = document.getElementById('pauseIcon');
+        const prevBtn = document.getElementById('prevBtn');
+        const nextBtn = document.getElementById('nextBtn');
+        const shuffleBtn = document.getElementById('shuffleBtn');
+        const repeatBtn = document.getElementById('repeatBtn');
+        const progressBar = document.getElementById('progressBar');
+        const progressFill = document.getElementById('progressFill');
+        const currentTime = document.getElementById('currentTime');
+        const duration = document.getElementById('duration');
+        const volumeSlider = document.getElementById('volumeSlider');
+        const volumeFill = document.getElementById('volumeFill');
+        const currentCover = document.getElementById('currentCover');
+        const currentTitle = document.getElementById('currentTitle');
+        const currentArtist = document.getElementById('currentArtist');
+
+        // Fullscreen elements
+        const fullscreenPlayer = document.getElementById('fullscreenPlayer');
+        const fullscreenBackground = document.getElementById('fullscreenBackground');
+        const closeFullscreen = document.getElementById('closeFullscreen');
+        const fullscreenCoverImg = document.getElementById('fullscreenCoverImg');
+        const fullscreenTitle = document.getElementById('fullscreenTitle');
+        const fullscreenArtist = document.getElementById('fullscreenArtist');
+        const fullscreenNote = document.getElementById('fullscreenNote');
+        const fullscreenPlayPauseBtn = document.getElementById('fullscreenPlayPauseBtn');
+        const fullscreenPlayIcon = document.getElementById('fullscreenPlayIcon');
+        const fullscreenPauseIcon = document.getElementById('fullscreenPauseIcon');
+        const fullscreenPrevBtn = document.getElementById('fullscreenPrevBtn');
+        const fullscreenNextBtn = document.getElementById('fullscreenNextBtn');
+        const fullscreenShuffleBtn = document.getElementById('fullscreenShuffleBtn');
+        const fullscreenRepeatBtn = document.getElementById('fullscreenRepeatBtn');
+        const fullscreenProgressBar = document.getElementById('fullscreenProgressBar');
+        const fullscreenProgressFill = document.getElementById('fullscreenProgressFill');
+        const fullscreenCurrentTime = document.getElementById('fullscreenCurrentTime');
+        const fullscreenDuration = document.getElementById('fullscreenDuration');
+        const fullscreenVolumeSlider = document.getElementById('fullscreenVolumeSlider');
+        const fullscreenVolumeFill = document.getElementById('fullscreenVolumeFill');
+
+        // ========================================
+        // INITIALIZE
+        // ========================================
+        function init() {
+            renderSongs();
+        }
+
+        // YouTube API Ready Callback
+        function onYouTubeIframeAPIReady() {
+            youtubePlayer = new YT.Player('youtubePlayerContainer', {
+                height: '0',
+                width: '0',
+                videoId: '',
+                playerVars: {
+                    'autoplay': 0,
+                    'controls': 0,
+                    'disablekb': 1,
+                    'fs': 0,
+                    'modestbranding': 1,
+                    'playsinline': 1
+                },
+                events: {
+                    'onReady': onPlayerReady,
+                    'onStateChange': onPlayerStateChange
+                }
+            });
+        }
+
+        function onPlayerReady(event) {
+            playerReady = true;
+            setupEventListeners();
+            startProgressTracking();
+        }
+
+        function onPlayerStateChange(event) {
+            if (event.data == YT.PlayerState.ENDED) {
+                if (repeatMode === 2) {
+                    youtubePlayer.seekTo(0);
+                    youtubePlayer.playVideo();
+                } else if (repeatMode === 1 || currentTrackIndex < shuffledPlaylist.length - 1) {
+                    nextTrack();
+                } else {
+                    isPlaying = false;
+                    updatePlayButton();
+                    updateFullscreenPlayButton();
+                }
+            } else if (event.data == YT.PlayerState.PLAYING) {
+                isPlaying = true;
+                updatePlayButton();
+                updateFullscreenPlayButton();
+            } else if (event.data == YT.PlayerState.PAUSED) {
+                isPlaying = false;
+                updatePlayButton();
+                updateFullscreenPlayButton();
+            }
+        }
+
+        // Progress tracking for YouTube
+        function startProgressTracking() {
+            progressInterval = setInterval(() => {
+                if (youtubePlayer && playerReady && isPlaying) {
+                    try {
+                        const currentTime = youtubePlayer.getCurrentTime();
+                        const duration = youtubePlayer.getDuration();
+                        
+                        if (duration > 0) {
+                            const progress = (currentTime / duration) * 100;
+                            progressFill.style.width = `${progress}%`;
+                            fullscreenProgressFill.style.width = `${progress}%`;
+                            
+                            const timeFormatted = formatTime(currentTime);
+                            const durationFormatted = formatTime(duration);
+                            
+                            currentTime.textContent = timeFormatted;
+                            fullscreenCurrentTime.textContent = timeFormatted;
+                            duration.textContent = durationFormatted;
+                            fullscreenDuration.textContent = durationFormatted;
+                        }
+                    } catch (e) {
+                        // Player not ready yet
+                    }
+                }
+            }, 100);
+        }
+
+        // ========================================
+        // RENDER SONGS
+        // ========================================
+        function renderSongs() {
+            songsGrid.innerHTML = '';
+            shuffledPlaylist.forEach((song, index) => {
+                const songCard = document.createElement('div');
+                songCard.className = 'song-card';
+                songCard.dataset.index = index;
+                
+                songCard.innerHTML = `
+                    <div class="song-cover" style="background: ${song.gradient};">
+                        <img src="${song.image}" alt="${song.title}">
+                        <div class="play-overlay">
+                            <div class="play-icon">
+                                <svg viewBox="0 0 24 24">
+                                    <path d="M8 5v14l11-7z"/>
+                                </svg>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="song-info">
+                        <div class="song-title">${song.title}</div>
+                        <div class="song-artist">${song.artist}</div>
+                        ${song.note ? `<div class="song-note">${song.note}</div>` : ''}
+                    </div>
+                `;
+                
+                songCard.addEventListener('click', () => {
+                    playSong(index);
+                });
+                
+                songsGrid.appendChild(songCard);
+            });
+        }
+
+        // ========================================
+        // PLAY SONG
+        // ========================================
+        function playSong(index) {
+            if (!playerReady) {
+                console.log('Player not ready yet');
+                return;
+            }
+
+            currentTrackIndex = index;
+            const song = shuffledPlaylist[index];
+            
+            if (!song.videoId) {
+                alert('Invalid YouTube URL for this song!');
+                return;
+            }
+
+            youtubePlayer.loadVideoById(song.videoId);
+            isPlaying = true;
+            
+            updateNowPlaying(song);
+            updatePlayButton();
+            updateActiveSong();
+            
+            nowPlaying.classList.add('active');
+        }
+
+        // ========================================
+        // UPDATE NOW PLAYING
+        // ========================================
+        function updateNowPlaying(song) {
+            currentCover.src = song.image;
+            currentTitle.textContent = song.title;
+            currentArtist.textContent = song.artist;
+            
+            // Update fullscreen player
+            fullscreenCoverImg.src = song.image;
+            fullscreenTitle.textContent = song.title;
+            fullscreenArtist.textContent = song.artist;
+            fullscreenNote.textContent = song.note || '';
+            
+            // Update background gradient
+            fullscreenBackground.style.background = song.gradient;
+        }
+
+        // ========================================
+        // TOGGLE FULLSCREEN
+        // ========================================
+        function openFullscreen() {
+            fullscreenPlayer.classList.add('active');
+            document.body.style.overflow = 'hidden';
+            
+            // Sync fullscreen controls with main player
+            updateFullscreenPlayButton();
+            syncFullscreenControls();
+        }
+
+        function closeFullscreenPlayer() {
+            fullscreenPlayer.classList.remove('active');
+            document.body.style.overflow = 'auto';
+        }
+
+        function updateFullscreenPlayButton() {
+            if (isPlaying) {
+                fullscreenPlayIcon.style.display = 'none';
+                fullscreenPauseIcon.style.display = 'block';
+            } else {
+                fullscreenPlayIcon.style.display = 'block';
+                fullscreenPauseIcon.style.display = 'none';
+            }
+        }
+
+        function syncFullscreenControls() {
+            fullscreenShuffleBtn.classList.toggle('active', isShuffle);
+            
+            if (repeatMode === 0) {
+                fullscreenRepeatBtn.classList.remove('active');
+            } else {
+                fullscreenRepeatBtn.classList.add('active');
+            }
+        }
+
+        // ========================================
+        // TOGGLE PLAY/PAUSE
+        // ========================================
+        function togglePlayPause() {
+            if (!playerReady) return;
+            
+            if (isPlaying) {
+                youtubePlayer.pauseVideo();
+                isPlaying = false;
+            } else {
+                youtubePlayer.playVideo();
+                isPlaying = true;
+            }
+            updatePlayButton();
+            updateFullscreenPlayButton();
+        }
+
+        // ========================================
+        // UPDATE PLAY BUTTON
+        // ========================================
+        function updatePlayButton() {
+            if (isPlaying) {
+                playIcon.style.display = 'none';
+                pauseIcon.style.display = 'block';
+            } else {
+                playIcon.style.display = 'block';
+                pauseIcon.style.display = 'none';
+            }
+        }
+
+        // ========================================
+        // UPDATE ACTIVE SONG
+        // ========================================
+        function updateActiveSong() {
+            document.querySelectorAll('.song-card').forEach((card, index) => {
+                if (index === currentTrackIndex) {
+                    card.classList.add('playing');
+                } else {
+                    card.classList.remove('playing');
+                }
+            });
+        }
+
+        // ========================================
+        // NEXT/PREVIOUS TRACK
+        // ========================================
+        function nextTrack() {
+            if (repeatMode === 2) {
+                youtubePlayer.seekTo(0);
+                youtubePlayer.playVideo();
+            } else {
+                currentTrackIndex = (currentTrackIndex + 1) % shuffledPlaylist.length;
+                playSong(currentTrackIndex);
+            }
+        }
+
+        function prevTrack() {
+            if (youtubePlayer.getCurrentTime() > 3) {
+                youtubePlayer.seekTo(0);
+            } else {
+                currentTrackIndex = (currentTrackIndex - 1 + shuffledPlaylist.length) % shuffledPlaylist.length;
+                playSong(currentTrackIndex);
+            }
+        }
+
+        // ========================================
+        // SHUFFLE
+        // ========================================
+        function toggleShuffle() {
+            isShuffle = !isShuffle;
+            shuffleBtn.classList.toggle('active', isShuffle);
+            fullscreenShuffleBtn.classList.toggle('active', isShuffle);
+            
+            if (isShuffle) {
+                const currentSong = shuffledPlaylist[currentTrackIndex];
+                shuffledPlaylist = [...playlist].sort(() => Math.random() - 0.5);
+                currentTrackIndex = shuffledPlaylist.indexOf(currentSong);
+            } else {
+                const currentSong = shuffledPlaylist[currentTrackIndex];
+                shuffledPlaylist = [...playlist];
+                currentTrackIndex = shuffledPlaylist.indexOf(currentSong);
+            }
+            
+            renderSongs();
+            updateActiveSong();
+        }
+
+        // ========================================
+        // REPEAT
+        // ========================================
+        function toggleRepeat() {
+            repeatMode = (repeatMode + 1) % 3;
+            
+            if (repeatMode === 0) {
+                repeatBtn.classList.remove('active');
+                fullscreenRepeatBtn.classList.remove('active');
+                repeatBtn.innerHTML = '<svg viewBox="0 0 24 24"><path d="M7 7h10v3l4-4-4-4v3H5v6h2V7zm10 10H7v-3l-4 4 4 4v-3h12v-6h-2v4z"/></svg>';
+                fullscreenRepeatBtn.innerHTML = '<svg viewBox="0 0 24 24"><path d="M7 7h10v3l4-4-4-4v3H5v6h2V7zm10 10H7v-3l-4 4 4 4v-3h12v-6h-2v4z"/></svg>';
+            } else if (repeatMode === 1) {
+                repeatBtn.classList.add('active');
+                fullscreenRepeatBtn.classList.add('active');
+                repeatBtn.innerHTML = '<svg viewBox="0 0 24 24"><path d="M7 7h10v3l4-4-4-4v3H5v6h2V7zm10 10H7v-3l-4 4 4 4v-3h12v-6h-2v4z"/></svg>';
+                fullscreenRepeatBtn.innerHTML = '<svg viewBox="0 0 24 24"><path d="M7 7h10v3l4-4-4-4v3H5v6h2V7zm10 10H7v-3l-4 4 4 4v-3h12v-6h-2v4z"/></svg>';
+            } else {
+                repeatBtn.classList.add('active');
+                fullscreenRepeatBtn.classList.add('active');
+                repeatBtn.innerHTML = '<svg viewBox="0 0 24 24"><path d="M7 7h10v3l4-4-4-4v3H5v6h2V7zm10 10H7v-3l-4 4 4 4v-3h12v-6h-2v4z"/><text x="12" y="16" text-anchor="middle" font-size="8" fill="currentColor">1</text></svg>';
+                fullscreenRepeatBtn.innerHTML = '<svg viewBox="0 0 24 24"><path d="M7 7h10v3l4-4-4-4v3H5v6h2V7zm10 10H7v-3l-4 4 4 4v-3h12v-6h-2v4z"/><text x="12" y="16" text-anchor="middle" font-size="8" fill="currentColor">1</text></svg>';
+            }
+        }
+
+        // ========================================
+        // TIME FORMATTING
+        // ========================================
+        function formatTime(seconds) {
+            const mins = Math.floor(seconds / 60);
+            const secs = Math.floor(seconds % 60);
+            return `${mins}:${secs < 10 ? '0' : ''}${secs}`;
+        }
+
+        // ========================================
+        // EVENT LISTENERS
+        // ========================================
+        function setupEventListeners() {
+            // Play/Pause
+            playPauseBtn.addEventListener('click', togglePlayPause);
+            fullscreenPlayPauseBtn.addEventListener('click', togglePlayPause);
+            
+            // Next/Previous
+            nextBtn.addEventListener('click', nextTrack);
+            prevBtn.addEventListener('click', prevTrack);
+            fullscreenNextBtn.addEventListener('click', nextTrack);
+            fullscreenPrevBtn.addEventListener('click', prevTrack);
+            
+            // Shuffle/Repeat
+            shuffleBtn.addEventListener('click', toggleShuffle);
+            repeatBtn.addEventListener('click', toggleRepeat);
+            fullscreenShuffleBtn.addEventListener('click', toggleShuffle);
+            fullscreenRepeatBtn.addEventListener('click', toggleRepeat);
+            
+            // Open fullscreen when clicking on current cover
+            currentCover.addEventListener('click', openFullscreen);
+            
+            // Close fullscreen
+            closeFullscreen.addEventListener('click', closeFullscreenPlayer);
+            
+            // Progress bar seek (bottom player)
+            progressBar.addEventListener('click', (e) => {
+                if (!playerReady) return;
+                const rect = progressBar.getBoundingClientRect();
+                const percent = (e.clientX - rect.left) / rect.width;
+                const duration = youtubePlayer.getDuration();
+                youtubePlayer.seekTo(percent * duration);
+            });
+            
+            // Progress bar seek (fullscreen)
+            fullscreenProgressBar.addEventListener('click', (e) => {
+                if (!playerReady) return;
+                const rect = fullscreenProgressBar.getBoundingClientRect();
+                const percent = (e.clientX - rect.left) / rect.width;
+                const duration = youtubePlayer.getDuration();
+                youtubePlayer.seekTo(percent * duration);
+            });
+            
+            // Volume control (bottom player)
+            volumeSlider.addEventListener('click', (e) => {
+                if (!playerReady) return;
+                const rect = volumeSlider.getBoundingClientRect();
+                const percent = (e.clientX - rect.left) / rect.width;
+                youtubePlayer.setVolume(percent * 100);
+                volumeFill.style.width = `${percent * 100}%`;
+                fullscreenVolumeFill.style.width = `${percent * 100}%`;
+            });
+            
+            // Volume control (fullscreen)
+            fullscreenVolumeSlider.addEventListener('click', (e) => {
+                if (!playerReady) return;
+                const rect = fullscreenVolumeSlider.getBoundingClientRect();
+                const percent = (e.clientX - rect.left) / rect.width;
+                youtubePlayer.setVolume(percent * 100);
+                volumeFill.style.width = `${percent * 100}%`;
+                fullscreenVolumeFill.style.width = `${percent * 100}%`;
+            });
+            
+            // Keyboard shortcuts
+            document.addEventListener('keydown', (e) => {
+                if (e.code === 'Space' && fullscreenPlayer.classList.contains('active')) {
+                    e.preventDefault();
+                    togglePlayPause();
+                } else if (e.code === 'Space') {
+                    e.preventDefault();
+                    togglePlayPause();
+                } else if (e.code === 'ArrowRight') {
+                    nextTrack();
+                } else if (e.code === 'ArrowLeft') {
+                    prevTrack();
+                } else if (e.code === 'Escape' && fullscreenPlayer.classList.contains('active')) {
+                    closeFullscreenPlayer();
+                }
+            });
+        }
+
+        // ========================================
+        // START APP
+        // ========================================
+        // Initialize the app immediately
+        init();
+        
+        // YouTube API will call onYouTubeIframeAPIReady when ready
+        // If it's already loaded, we need to call it manually
+        if (window.YT && window.YT.Player) {
+            onYouTubeIframeAPIReady();
+        }
+    </script>
+</body>
+</html>
