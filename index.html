@@ -943,7 +943,7 @@
         </div>
     </div>
 
-    <!-- YouTube Player (hidden) -->
+    <!--  Player (hidden) -->
     <div id="youtubePlayerContainer" style="display: none;"></div>
 
     <!-- Fullscreen Player -->
@@ -1031,132 +1031,134 @@
         // PLAYLIST DATA - REPLACE WITH YOUR SONGS
         // ========================================
         // Just paste the full YouTube URL - the code will extract the video ID automatically!
+// UPDATED PLAYLIST - Copy this and replace lines 1034-1162 in your index.html file
+
         const playlist = [
             {
-                title: "Perfect",
-                artist: "Ed Sheeran",
+                title: "Ishqa Ve",
+                artist: "Zeeshan Ali",
                 image: "photos/photo1.JPEG",
-                youtubeUrl: "https://www.youtube.com/watch?v=iKzRIweSBLA&list=RDiKzRIweSBLA&start_radio=1",
+                youtubeUrl: "https://music.youtube.com/watch?v=XffsuRCvg2k&si=RhmWs2Vsl83vbF62",
                 note: "Our first dance ❤️",
                 gradient: "linear-gradient(135deg, #667eea 0%, #764ba2 100%)"
             },
             {
-                title: "Lover",
-                artist: "Taylor Swift",
+                title: "Love Me Harder",
+                artist: "Ariana Grande & The Weeknd",
                 image: "photos/photo2.jpeg",
-                youtubeUrl: "https://music.youtube.com/watch?v=XffsuRCvg2k&si=RhmWs2Vsl83vbF62",
+                youtubeUrl: "https://music.youtube.com/watch?v=uvXtC13GlxQ&si=fnm9f-vF1DpS-bH0",
                 note: "You're my best friend",
                 gradient: "linear-gradient(135deg, #f093fb 0%, #f5576c 100%)"
             },
             {
-                title: "All of Me",
-                artist: "John Legend",
+                title: "Him & I",
+                artist: "G-Eazy",
                 image: "photos/photo3.jpeg",
                 youtubeUrl: "https://music.youtube.com/watch?v=NdSJ1pyaAH8&si=uxcMBa3GJyeZCJt_",
                 note: "Every little thing about you",
                 gradient: "linear-gradient(135deg, #4facfe 0%, #00f2fe 100%)"
             },
             {
-                title: "Can't Help Falling in Love",
-                artist: "Elvis Presley",
+                title: "Sailor Song",
+                artist: "Gigi Perez",
                 image: "photos/photo5.JPG",
-                youtubeUrl: "https://www.youtube.com/watch?v=vGJTaP6anOU",
+                youtubeUrl: "https://music.youtube.com/watch?v=wPY6dOC-MDA&si=b6COHY0RdZuvL_-m",
                 note: "Classic, just like us",
                 gradient: "linear-gradient(135deg, #43e97b 0%, #38f9d7 100%)"
             },
             {
-                title: "Thinking Out Loud",
-                artist: "Ed Sheeran",
+                title: "Die With A Smile",
+                artist: "Lady Gaga & Bruno Mars",
                 image: "photos/photo6.JPG",
-                youtubeUrl: "https://www.youtube.com/watch?v=lp-EO5I60KA",
+                youtubeUrl: "https://music.youtube.com/watch?v=DlFXDl_ROAM&si=FqGWbfB0YCsN6f_d",
                 note: "When we're 70 together",
                 gradient: "linear-gradient(135deg, #fa709a 0%, #fee140 100%)"
             },
             {
-                title: "Make You Feel My Love",
-                artist: "Adele",
+                title: "Perfect",
+                artist: "Ed Sheeran",
                 image: "photos/photo7.JPG",
-                youtubeUrl: "https://www.youtube.com/watch?v=0put0_a--Ng",
+                youtubeUrl: "https://www.youtube.com/watch?v=2Vv-BfVoq4g",
                 note: "I'd do anything for you",
                 gradient: "linear-gradient(135deg, #30cfd0 0%, #330867 100%)"
             },
             {
-                title: "A Thousand Years",
-                artist: "Christina Perri",
+                title: "Raindance",
+                artist: "Dave",
                 image: "photos/photo8.JPG",
-                youtubeUrl: "https://www.youtube.com/watch?v=rtOvBOTyX00",
+                youtubeUrl: "https://music.youtube.com/watch?v=1qmrq6I_jHI",
                 note: "Loved you for a thousand more",
                 gradient: "linear-gradient(135deg, #a8edea 0%, #fed6e3 100%)"
             },
             {
-                title: "Lucky",
-                artist: "Jason Mraz ft. Colbie Caillat",
+                title: "Boyfriend",
+                artist: "Karan Aujla",
                 image: "photos/photo9.JPG",
-                youtubeUrl: "https://www.youtube.com/watch?v=acvIVA9-FMQ",
+                youtubeUrl: "https://www.youtube.com/watch?v=5GCfYLguTIs",
                 note: "Lucky I'm in love with you",
                 gradient: "linear-gradient(135deg, #ff9a9e 0%, #fecfef 100%)"
             },
             {
-                title: "Photograph",
-                artist: "Ed Sheeran",
+                title: "One of the Girls",
+                artist: "The Weeknd",
                 image: "photos/photo10.jpg",
-                youtubeUrl: "https://www.youtube.com/watch?v=nSDgHBxUbVQ",
+                youtubeUrl: "https://www.youtube.com/watch?v=Mx92lTYxrJQ&list=RDMx92lTYxrJQ&start_radio=1",
                 note: "Every memory with you",
                 gradient: "linear-gradient(135deg, #ffecd2 0%, #fcb69f 100%)"
             },
             {
-                title: "At Last",
-                artist: "Etta James",
+                title: "KU LO SA",
+                artist: "Oxlade, Camila Cabello",
                 image: "photos/photo11.jpg",
-                youtubeUrl: "https://www.youtube.com/watch?v=S-cbOl96RFM",
+                youtubeUrl: "https://www.youtube.com/watch?v=IcIkmPU9reU&list=RDIcIkmPU9reU&index=2",
                 note: "My love has come along",
                 gradient: "linear-gradient(135deg, #ff6e7f 0%, #bfe9ff 100%)"
             },
             {
-                title: "Falling",
-                artist: "Harry Styles",
+                title: "greedy",
+                artist: "Tate McRae",
                 image: "photos/photo12.JPG",
-                youtubeUrl: "https://www.youtube.com/watch?v=EiDvhm0boXk",
+                youtubeUrl: "https://www.youtube.com/watch?v=lYkVZpTjuOs&list=RDlYkVZpTjuOs&start_radio=1",
                 note: "Falling for you every day",
                 gradient: "linear-gradient(135deg, #e0c3fc 0%, #8ec5fc 100%)"
             },
             {
-                title: "Everything",
-                artist: "Michael Bublé",
+                title: "A Thousand Years",
+                artist: "Christina Perri",
                 image: "photos/photo13.PNG",
-                youtubeUrl: "https://www.youtube.com/watch?v=SPUJIbXN0WY",
+                youtubeUrl: "https://www.youtube.com/watch?v=rtOvBOTyX00",
                 note: "You're my everything",
                 gradient: "linear-gradient(135deg, #fbc2eb 0%, #a6c1ee 100%)"
             },
             {
-                title: "Die With A Smile",
-                artist: "Bruno Mars & Lady Gaga",
+                title: "Sweater Weather",
+                artist: "The Neighbourhood",
                 image: "photos/photo1.JPEG",
-                youtubeUrl: "https://www.youtube.com/watch?v=kPa7bsKwL-c",
+                youtubeUrl: "https://music.youtube.com/watch?v=cULQhvuq1Zc&si=jGsVLBXEN9dEXOjK",
                 note: "If the world ends with you",
                 gradient: "linear-gradient(135deg, #fdcbf1 0%, #e6dee9 100%)"
             },
             {
-                title: "Adore You",
-                artist: "Harry Styles",
+                title: "Lover",
+                artist: "Taylor Swift",
                 image: "photos/photo2.jpeg",
-                youtubeUrl: "https://www.youtube.com/watch?v=90RLzVUuXe4",
+                youtubeUrl: "https://www.youtube.com/watch?v=e-ORhEE9VVg",
                 note: "Walk in your rainbow paradise",
                 gradient: "linear-gradient(135deg, #f77062 0%, #fe5196 100%)"
             },
             {
-                title: "Like I'm Gonna Lose You",
-                artist: "Meghan Trainor ft. John Legend",
+                title: "All of Me",
+                artist: "John Legend",
                 image: "photos/photo3.jpeg",
-                youtubeUrl: "https://www.youtube.com/watch?v=2-MBfn8XjIU",
+                youtubeUrl: "https://www.youtube.com/watch?v=450p7goxZqg",
                 note: "Love you like every day is the last",
                 gradient: "linear-gradient(135deg, #c471f5 0%, #fa71cd 100%)"
             },
             {
-                title: "You Are The Reason",
-                artist: "Calum Scott",
+                title: "Thinking Out Loud",
+                artist: "Ed Sheeran",
                 image: "photos/photo5.JPG",
-                youtubeUrl: "https://www.youtube.com/watch?v=ByfFurjQAEU",
+                youtubeUrl: "https://www.youtube.com/watch?v=lp-EO5I60KA",
                 note: "My reason for everything",
                 gradient: "linear-gradient(135deg, #a1c4fd 0%, #c2e9fb 100%)"
             }
